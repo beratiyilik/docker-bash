@@ -198,10 +198,22 @@ alias rmrf='rm -rf'
 
 # docker aliases
 if command -v docker >/dev/null 2>&1; then
-    alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
-    alias dimg='docker images'
-    alias dlog='docker logs -f'
-    alias dexec='docker exec -it'
+    alias dokcer="docker" # common typo fallback
+    alias dps='docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+    alias drm="docker rm -f"
+    alias dl="docker logs -f"
+    alias dex="docker exec -it"
+    # alias dsh="dsh() { docker exec -it \"$1\" sh || docker exec -it \"$1\" bash; }"
+    alias di="docker images"
+    alias db="docker build"
+    alias dri="docker rmi -f"
+    alias dpurge="docker system prune -a --volumes"
+    alias dc="docker compose"
+    alias dcu="docker compose up -d"
+    alias dcs="docker compose stop"
+    alias dcd="docker compose down"
+    alias dcd2="docker compose down --remove-orphans --volumes --rmi all"
+    alias dcr="docker compose restart"
 fi
 
 #############################################################################
