@@ -1,0 +1,46 @@
+# docker-compose.yml — predefined run convention for the dev container.
+#
+# This file is the single source of truth for how the container is built and
+# run: the host-mountable output path, hostname, and init process live here
+# instead of being copy-pasted from the README.
+#
+# Quick start:
+#   docker compose build
+#   docker compose run --rm dev   # interactive shell; outputs land in ./workspace
+#
+# Outputs written to /workspace inside the container appear in ./workspace on the
+# host (bind mount below), so they survive the container and are reachable from
+# the host.
+#
+# SECURITY NOTE: the bind mount is a two-way door. Anything run in the container
+# can read AND write the host's ./workspace. The container is not a sandbox — do
+# not run code you don't trust. See the Security section of the README.
+
+services:
+  dev:
+    build:
+      context: .
+      args:
+        # bump deliberately; keep in sync with the Dockerfile defaults.
+        VERSION: "1.0.0"
+        USERNAME: devuser
+        UID: "1001"
+        GID: "1001"
+        SHARE_GID: "2001"
+        WORKDIR_PATH: /workspace
+    image: husk:ubuntu-26.04
+    hostname: devbox
+    container_name: devbox
+
+    # interactive shell needs a TTY and stdin held open.
+    stdin_open: true
+    tty: true
+
+    # run a real init (PID 1) so signals propagate and zombie processes from
+    # background work in a long-lived container get reaped.
+    init: true
+
+    # host-accessible output path. ./workspace on the host <-> /workspace in the
+    # container. Create ./workspace before first run, or compose will make it.
+    volumes:
+      - ./workspace:/workspace

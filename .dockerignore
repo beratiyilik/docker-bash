@@ -1,0 +1,23 @@
+# keep the build context minimal: only the Dockerfile, entrypoint, and src/
+# are needed to build the image. Everything else is excluded.
+
+# host-side output directory (created by compose/Makefile, not part of the build)
+workspace/
+
+# version control and project metadata
+.git/
+.gitignore
+.dockerignore
+
+# docs and orchestration (not needed inside the image)
+README.md
+LICENSE
+docker-compose.yml
+Makefile
+
+# editor / OS cruft
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~

@@ -1,0 +1,96 @@
+# ~/.config/bashify/bashifyrc
+# bashify configuration — uncomment and edit only what you want to change.
+# Defaults live in bashify.bash; anything set here overrides them.
+# The BASHIFY_FG_* palette and BASHIFY_STYLE_* attributes are available below.
+#
+# Shipped by the docker-bash image as a starter; installed to
+# ~/.config/bashify/bashifyrc on first container start (never overwritten).
+# Upstream: https://github.com/beratiyilik/bashify
+
+#############################################################################
+# SEGMENTS
+#############################################################################
+
+# Left side (next to the cursor). Reorder, add, or remove freely.
+# BASHIFY_LEFT_PROMPT_ELEMENTS=(
+#   # user        # username
+#   # hostname    # short hostname
+#   dir           # current directory
+#   git           # branch and status
+#   prompt_char   # prompt character
+#   status        # non-zero exit code of last command
+# )
+
+# Right side (right-aligned).
+# BASHIFY_RIGHT_PROMPT_ELEMENTS=(
+#   jobs          # background job count
+#   node          # Node.js version in a node project
+#   bashver       # bash version
+#   time          # current time
+# )
+
+# Disable the right side entirely — it does not render properly inside Docker.
+BASHIFY_RIGHT_PROMPT_ENABLED=false
+
+# Nudge right-aligned segments; negative, zero, or positive.
+# BASHIFY_RIGHT_PROMPT_OFFSET=0
+
+#############################################################################
+# DIRECTORY
+#############################################################################
+
+# Style: full | compact | compactalt | shortened | name
+# BASHIFY_DIR_STYLE="compactalt"
+# BASHIFY_DIR_MAX_LENGTH=30       # threshold for shortened style
+# BASHIFY_DIR_MAX_COMPONENTS=4    # threshold for shortened style
+# BASHIFY_DIR_COMPACT_MIN_LEN=3   # min chars kept per segment in compactalt
+# BASHIFY_DIR_COLOR="$BASHIFY_FG_BLUE"
+
+#############################################################################
+# GIT
+#############################################################################
+
+# BASHIFY_GIT_SHOW_DIRTY=true
+# BASHIFY_GIT_SHOW_AHEAD_BEHIND=true
+# BASHIFY_GIT_CACHE_TIMEOUT=3
+
+# Icons
+BASHIFY_GIT_ICON_BRANCH="⎇ "
+BASHIFY_GIT_ICON_STAGED="✚"
+BASHIFY_GIT_ICON_UNSTAGED="✎"
+BASHIFY_GIT_ICON_UNTRACKED="✦"
+BASHIFY_GIT_ICON_CONFLICT="✗"
+BASHIFY_GIT_ICON_STASH="⚑"
+BASHIFY_GIT_ICON_AHEAD="↑"
+BASHIFY_GIT_ICON_BEHIND="↓"
+BASHIFY_GIT_ICON_WARNING="⚠"
+
+#############################################################################
+# PROMPT CHARACTER
+#############################################################################
+
+BASHIFY_PROMPT_CHAR_ICON="❯"
+# BASHIFY_PROMPT_CHAR_COLOR_SUCCESS="$BASHIFY_FG_GREEN"
+# BASHIFY_PROMPT_CHAR_COLOR_FAILURE="$BASHIFY_FG_RED"
+
+#############################################################################
+# NODE
+#############################################################################
+
+# BASHIFY_NODE_SHOW_SOURCE=false   # append @nv / @nd / @sys tag
+# BASHIFY_NODE_COLOR="$BASHIFY_FG_GREEN"
+
+#############################################################################
+# MISC
+#############################################################################
+
+# BASHIFY_TIME_COLOR="$BASHIFY_FG_LIGHT_BLUE"
+
+#############################################################################
+# ICONS (this image's defaults — requires a Nerd/Unicode-capable font)
+#############################################################################
+
+BASHIFY_DIR_TRUNCATE_ICON="…"
+BASHIFY_STATUS_ICON="✘"
+BASHIFY_JOBS_ICON="⚙"
+BASHIFY_BASHVER_ICON="$"

@@ -1,0 +1,8 @@
+# host-side output directory created by docker-compose / make for the
+# /workspace bind mount. Build artifacts, not source — keep it out of git.
+/workspace/
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*~
